@@ -1,0 +1,109 @@
+{
+  "best_model": "Logistic Regression",
+  "classification": [
+    {
+      "Model": "Logistic Regression",
+      "CV ROC-AUC": 0.892,
+      "Test Accuracy": 0.791,
+      "Precision": 0.408,
+      "Recall": 0.81,
+      "F1": 0.543,
+      "Test ROC-AUC": 0.885
+    },
+    {
+      "Model": "Decision Tree",
+      "CV ROC-AUC": 0.825,
+      "Test Accuracy": 0.723,
+      "Precision": 0.329,
+      "Recall": 0.778,
+      "F1": 0.462,
+      "Test ROC-AUC": 0.788
+    },
+    {
+      "Model": "Random Forest",
+      "CV ROC-AUC": 0.885,
+      "Test Accuracy": 0.837,
+      "Precision": 0.478,
+      "Recall": 0.683,
+      "F1": 0.562,
+      "Test ROC-AUC": 0.875
+    }
+  ],
+  "gains": [
+    {
+      "Contact top %": 10,
+      "Customers contacted": 41,
+      "Responders found": 31,
+      "% of all responders captured": 49.2063492063492,
+      "Response rate of contacted group %": 75.60975609756098,
+      "Lift": 4.932636469221835
+    },
+    {
+      "Contact top %": 20,
+      "Customers contacted": 82,
+      "Responders found": 43,
+      "% of all responders captured": 68.25396825396825,
+      "Response rate of contacted group %": 52.4390243902439,
+      "Lift": 3.421022067363531
+    },
+    {
+      "Contact top %": 30,
+      "Customers contacted": 123,
+      "Responders found": 50,
+      "% of all responders captured": 79.36507936507937,
+      "Response rate of contacted group %": 40.65040650406504,
+      "Lift": 2.651955090979481
+    },
+    {
+      "Contact top %": 40,
+      "Customers contacted": 164,
+      "Responders found": 55,
+      "% of all responders captured": 87.3015873015873,
+      "Response rate of contacted group %": 33.53658536585366,
+      "Lift": 2.187862950058072
+    },
+    {
+      "Contact top %": 50,
+      "Customers contacted": 206,
+      "Responders found": 59,
+      "% of all responders captured": 93.65079365079364,
+      "Response rate of contacted group %": 28.640776699029125,
+      "Lift": 1.8684697179842809
+    },
+    {
+      "Contact top %": 60,
+      "Customers contacted": 247,
+      "Responders found": 60,
+      "% of all responders captured": 95.23809523809523,
+      "Response rate of contacted group %": 24.291497975708502,
+      "Lift": 1.5847310584152687
+    },
+    {
+      "Contact top %": 80,
+      "Customers contacted": 329,
+      "Responders found": 62,
+      "% of all responders captured": 98.4126984126984,
+      "Response rate of contacted group %": 18.84498480243161,
+      "Lift": 1.2294109133014908
+    },
+    {
+      "Contact top %": 100,
+      "Customers contacted": 411,
+      "Responders found": 63,
+      "% of all responders captured": 100.0,
+      "Response rate of contacted group %": 15.328467153284672,
+      "Lift": 1.0
+    }
+  ],
+  "linear_regression": {
+    "test_r2": 0.7120736818661015,
+    "rmse": 338.16841000873933,
+    "mae": 247.45989063311768
+  },
+  "cluster_names": {
+    "3": "Premium Spenders",
+    "1": "Established Families",
+    "0": "Budget Families",
+    "2": "Young Starters"
+  }
+}
