@@ -96,3 +96,16 @@ STRATEGY = {
     "Budget Families": "Discount coupons, family and kids' product bundles, in-store promotions. Keep contact cost low.",
     "Young Starters": "Web and mobile promotions, first-purchase coupons, retargeting ads (they visit the website often but buy little).",
 }
+
+
+def customer_features(inp):
+    """Build one engineered feature row from raw inputs entered in the dashboard.
+    inp keys: Age, Education, Marital_Status, Income, Kidhome, Teenhome, Recency, Customer_Days,
+    the 6 Mnt* columns, the 4 Num*Purchases columns, NumWebVisitsMonth, Total_Accepted_Cmp, Complain."""
+    row = dict(inp)
+    row["Children"] = inp["Kidhome"] + inp["Teenhome"]
+    row["Partner"] = 1 if inp["Marital_Status"] == "Partner" else 0
+    row["Edu_Code"] = EDU_CODE[inp["Education"]]
+    row["Total_Spent"] = sum(inp[c] for c in MNT_COLS)
+    row["Total_Purchases"] = sum(inp[c] for c in PURCHASE_COLS)
+    return pd.DataFrame([row])
