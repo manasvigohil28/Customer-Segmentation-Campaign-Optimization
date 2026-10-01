@@ -76,21 +76,23 @@ def load_clean(path=DATA_PATH):
     return clean(load_raw(path))
 
 
-# Business names for clusters are assigned in the notebook after profiling,
-# based on cluster means of Income / Total_Spent / Children / web visits.
+# Business names for clusters are assigned after profiling, using the cluster means.
 def name_clusters(profile):
-    """profile: DataFrame of cluster means indexed by cluster id. Returns {id: name}."""
-    # Rank clusters from highest to lowest average spending
-    order = profile["Total_Spent"].sort_values(ascending=False).index
-    labels = ["Premium Spenders", "Established Families", "Average Shoppers", "Budget Families"]
+    """profile: DataFrame of cluster means indexed by cluster id (k = 4). Returns {id: name}.
+    Highest spender -> Premium Spenders, second -> Established Families;
+    of the two low-spending clusters, the one with more children -> Budget Families,
+    the other (younger, more web visits) -> Young Starters."""
+    order = list(profile["Total_Spent"].sort_values(ascending=False).index)
     if len(order) != 4:
-        return {c: f"Segment {i + 1}" for i, c in enumerate(order)}
-    return {int(c): labels[i] for i, c in enumerate(order)}
+        return {int(c): f"Segment {i + 1}" for i, c in enumerate(order)}
+    low = profile.loc[order[2:], "Children"].sort_values(ascending=False).index
+    return {int(order[0]): "Premium Spenders", int(order[1]): "Established Families",
+            int(low[0]): "Budget Families", int(low[1]): "Young Starters"}
 
 
 STRATEGY = {
-    "Premium Spenders": "Luxury & wine offers, loyalty / VIP program, catalog campaigns.",
-    "Established Families": "Family bundles, store promotions, teen-focused offers.",
-    "Average Shoppers": "Cross-sell bundles, web retargeting, deal-based reactivation.",
-    "Budget Families": "Discount coupons, deals, kids' product bundles, web promotions.",
+    "Premium Spenders": "Luxury wine & meat offers, VIP / loyalty program, catalog campaigns. Top priority for every campaign.",
+    "Established Families": "Value bundles and deals (they use discounts often), store and catalog promotions, upgrade offers to move them to premium.",
+    "Budget Families": "Discount coupons, family and kids' product bundles, in-store promotions. Keep contact cost low.",
+    "Young Starters": "Web and mobile promotions, first-purchase coupons, retargeting ads (they visit the website often but buy little).",
 }
