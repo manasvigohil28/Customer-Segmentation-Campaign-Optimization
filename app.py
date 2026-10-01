@@ -73,8 +73,11 @@ def clf_matrix(data):
 
 # ---------------------------------------------------------------- sidebar
 st.sidebar.title("📊 Customer Intelligence")
-page = st.sidebar.radio("Navigate", ["🏠 Overview", "👥 Customer Segments", "🤖 Model Performance",
-                                     "🔮 Predict a Customer", "🎯 Campaign Targeting"])
+PAGES = ["🏠 Overview", "👥 Customer Segments", "🤖 Model Performance", "🔮 Predict a Customer", "🎯 Campaign Targeting"]
+PAGE_KEYS = ["overview", "segments", "models", "predict", "targeting"]
+# A page can also be opened directly with a link, e.g. http://localhost:8501/?page=targeting
+start = PAGE_KEYS.index(st.query_params.get("page")) if st.query_params.get("page") in PAGE_KEYS else 0
+page = st.sidebar.radio("Navigate", PAGES, index=start)
 st.sidebar.markdown("---")
 seg_filter = st.sidebar.multiselect("Filter segments", SEG_ORDER, default=SEG_ORDER)
 st.sidebar.caption("Dataset: Customer Personality Analysis (Kaggle) · 2,054 customers after cleaning")
