@@ -41,7 +41,7 @@ LDCE_DataScience_Project/
 │   └── analysis.ipynb         # Complete analysis (Steps 1–6)
 ├── models/                    # Saved models (.pkl) and metrics.json
 ├── figures/                   # All charts used in the report
-└── report/                    # Project report + dashboard screenshots
+└── report/screenshots/        # Dashboard screenshots
 ```
 
 ## Methodology
